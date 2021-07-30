@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type coertion</title>
+    <style>
+        code {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Type coertion</h1>
+    <hr>
+    <code id="coertion"></code>
+    <script>
+        let resultString = "";
+
+        // into numbers
+        resultString += "Into Number:\n\n";
+
+        resultString += ConcateAndLog(["false + true = ", (false + true), "\n"]);
+        resultString += ConcateAndLog(["200 / '10' = ", (200 / '10'), "\n"]);
+        resultString += ConcateAndLog(["200 * '10' = ", (200 * '10'), "\n"]);
+        resultString += ConcateAndLog(["200 - '10' = ", (200 - '10'), "\n"]);
+        resultString += ConcateAndLog(["[] * 1 = ", ([] * 1), "\n"]);
+
+        // into strings
+        resultString += "\nInto String:\n\n";
+
+        resultString += ConcateAndLog(["'10' + 200 = ", ('10' + 200), "\n"]);
+        resultString += ConcateAndLog(["[] + {} = ", ([] + {}), "\n"]);
+        resultString += ConcateAndLog(["{}+[]+{}+[1] = ", ({}+[]+{}+[1]), "\n"]);
+        resultString += ConcateAndLog(["+'number' + 'i' = ", (+'number' + 'i'), "\n"]);
+
+        //into logicals
+        resultString += "\nInto Boolean:\n\n";
+
+        resultString += ConcateAndLog(["'true' == true = ", ('true' == true), "\n"]);
+        resultString += ConcateAndLog(["null == '' = ", (null == ''), "\n"]);
+        resultString += ConcateAndLog(["false == '' = ", (false == ''), "\n"]);
+        resultString += ConcateAndLog(["['x', 'y'] == 'x,y' = ", (['x', 'y'] == 'x,y'), "\n"]);
+
+        //into logicals
+        resultString += "\nOthers:\n\n";
+        resultString += ConcateAndLog(["1 + 2 / 'three' = ", (1 + 2 / 'three'), "\n"]);
+
+        document.querySelector('#coertion').innerText = resultString;
+
+        function ConcateAndLog(parts = []) {
+            let result = "";
+            parts.forEach(part => {
+                result += part;
+                console.log(part);
+            });
+
+            return result;
+        }
+    </script>
+</body>
+</html>
